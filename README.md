@@ -1,5 +1,5 @@
 # Getting Started
-This is a containerized version of Geant4.10.07.p03 with CNatzke's two-photon emission physics added
+This is a containerized version of the GRIFFIN Geant4 simulation used for two-photon emission studies. The simulation contains the PEEK source holder and ```/gun/``` commands to properly simulate a finite radius source.  
 
 ## Building 
 To build the docker image, run the below command:
@@ -11,10 +11,10 @@ in the directory containing the files `Dockerfile`
 ## Running 
 To run the container as root user:
 ```
-docker run -it --rm=true cnatzke/geant4.10.07:latest
+docker run -it --rm=true cnatzke/griffin_2photon_sim:latest
 ```
 To run similar to the OSG implementation (recommended)
 ```
 docker run --user $(id -u):$(id -g) --rm=true -it -v $(pwd):/scratch -w
-/scratch cnatzke/geant4.10.07:latest /bin/bash 
+/scratch cnatzke/griffin_2photon_sim:latest /bin/bash 
 ```
