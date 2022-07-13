@@ -45,17 +45,16 @@ RUN mkdir /software/griffin_2photon_simulation/build && cd /software/griffin_2ph
     source /software/root/bin/thisroot.sh && \
     source /software/${version_geant4}/bin/geant4.sh && \
     cmake -DCMAKE_INSTALL_PREFIX=/software/simulation \
-    #-DWITH_GEANT4_UIVIS=OFF .. && \
     .. && \
-    make && make install && \
+    make -j && make install && \
     rm -rf /software/griffin_2photon_simulation
 
 ##-------------------------------------------
 ## Release Container
 ##-------------------------------------------
 ## use OSG base container
-#FROM opensciencegrid/osgvo-ubuntu-20.04:latest
-#
-#COPY --from=stage1 /software /software
-#
-#WORKDIR /software
+FROM opensciencegrid/osgvo-ubuntu-20.04:latest
+
+COPY --from=stage1 /software /software
+
+WORKDIR /software

@@ -1,0 +1,118 @@
+#------------------
+# Physics List
+#------------------
+/DetSys/phys/SelectPhysics emlivermore
+
+/cuts/setLowEdge 250 eV
+
+
+/run/initialize
+
+/random/setSeeds 1 0
+/process/em/fluo true
+/process/em/auger true
+/process/em/pixe true
+
+#------------------
+# Griffin Detectors & Properties
+#------------------
+#SetCustomShieldsPresent 1 (include suppressors)
+#SetCustomShieldsPresent 0 (do NOT include suppressors)
+#SetCustomShieldsPresent -1 (only include side and back suppressors, ie. no extension)
+#SetCustomRadialDistance 11 cm (leave this at 11 cm, even in back mode)
+#SetCustomExtensionSuppressorLocation 0 (High efficiency mode)
+#SetCustomExtensionSuppressorLocation 1 (Optimized PtT mode)
+#includeGriffinHevimet 0 (no)
+#includeGriffinHevimet 1 (yes)
+#------------------
+/DetSys/det/SetCustomShieldsPresent 1
+/DetSys/det/SetCustomRadialDistance 11 cm
+# setting shield position 
+/DetSys/det/SetCustomExtensionSuppressorLocation 1
+/DetSys/det/includeGriffinHevimet 0
+
+/DetSys/det/SetCustomPosition 1 1 0
+/DetSys/det/addGriffinCustomDetector 1
+/DetSys/det/SetCustomPosition 2 2 0
+/DetSys/det/addGriffinCustomDetector 2
+/DetSys/det/SetCustomPosition 3 3 0
+/DetSys/det/addGriffinCustomDetector 3
+/DetSys/det/SetCustomPosition 4 4 0
+/DetSys/det/addGriffinCustomDetector 4
+/DetSys/det/SetCustomPosition 5 5 0
+/DetSys/det/addGriffinCustomDetector 5
+/DetSys/det/SetCustomPosition 6 6 0
+/DetSys/det/addGriffinCustomDetector 6
+/DetSys/det/SetCustomPosition 7 7 0
+/DetSys/det/addGriffinCustomDetector 7
+/DetSys/det/SetCustomPosition 8 8 0
+/DetSys/det/addGriffinCustomDetector 8
+/DetSys/det/SetCustomPosition 9 9 0
+/DetSys/det/addGriffinCustomDetector 9
+/DetSys/det/SetCustomPosition 10 10 0
+/DetSys/det/addGriffinCustomDetector 10
+/DetSys/det/SetCustomPosition 11 11 0
+/DetSys/det/addGriffinCustomDetector 11
+/DetSys/det/SetCustomPosition 12 12 0 
+/DetSys/det/addGriffinCustomDetector 12
+/DetSys/det/SetCustomPosition 13 13 0
+/DetSys/det/addGriffinCustomDetector 13
+/DetSys/det/SetCustomPosition 14 14 0
+/DetSys/det/addGriffinCustomDetector 14
+/DetSys/det/SetCustomPosition 15 15 0
+/DetSys/det/addGriffinCustomDetector 15 
+/DetSys/det/SetCustomPosition 16 16 0
+/DetSys/det/addGriffinCustomDetector 16
+
+
+#------------------
+# PEEK Source Holder
+#------------------
+#/DetSys/app/addSourceHolder position
+/DetSys/app/addSourceHolder 2
+
+
+#------------------
+# GRIFFIN Structure
+#------------------
+#/DetSys/app/addGriffinStructure 0 (include both up- and down-stream halves)
+#/DetSys/app/addGriffinStructure 1 (include both upstream half)
+#/DetSys/app/addGriffinStructure 2 (include both downstream half)
+#/DetSys/app/addGriffinStructure 1
+
+#------------------
+# Verbose Levels
+#------------------
+/control/verbose 1
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+
+
+#------------------
+# User Defined Decays
+#------------------
+# 90Y
+#/process/had/rdm/setRadioactiveDecayFile 39 90 user-data/z39.a90.decay
+
+# 90Zr
+#/process/had/rdm/setRadioactiveDecayFile 40 90 user-data/z40.a90.decay
+#/process/had/rdm/setPhotoEvaporationFile 40 90 user-data/z40.a90.evap
+#/process/had/rdm/setTwoPhotonFile 40 90 user-data/z40.a90.twophoton
+
+#------------------
+# Radioactive Decays
+#------------------
+# 1.05 inches
+/DetSys/gun/sourceRadius 2.667 cm
+
+/gun/particle ion
+/gun/ion 27 60
+
+# Set decay limits (aMin, aMax, zMin, zMax)
+/process/had/rdm/nucleusLimits 60 60 27 27
+
+#------------------
+# Beam On
+#------------------
+/run/beamOn 100000
